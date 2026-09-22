@@ -1,26 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --cream: #fff7df;
+    --green: #0c3828;
+    --gold: #dfb55c;
+    --muted: #6c7457
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+    box-sizing: border-box
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+    scroll-behavior: smooth
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: var(--cream);
+    color: var(--green);
+    font-family: 'DM Sans', Arial, sans-serif
 }
+
+.nav {
+    height: 72px;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    width: 100%;
+    padding: 0 clamp(22px, 6vw, 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    transition: .3s
+}
+
+.nav:hover {
+    background: rgba(7, 41, 29, .75);
+    backdrop-filter: blur(10px)
+}
+
+.nav a {
+    text-decoration: none;
+    color: inherit
+}
+
+.nav-brand {
+    font: 600 22px 'Playfair Display', Georgia, serif
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    font-size: 13px;
+    letter-spacing: .12em;
+    text-transform: uppercase
+}
+
+.menu-button {
+    display: none;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 25px
+}
+
+.mobile-links {
+    display: none
+}
+
+.hero {
+    min-height: 100svh;
+    position: relative;
+    display: grid;
+    place-items: center;
+    background: #07301f url('/walima-botanical-backdrop.png') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    overflow: hidden
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(4, 30, 20, .52), rgba(1, 23, 14, .74))
+}
+
+.hero-content {
+    position: relative;
+    padding: 110px 24px 70px;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, .3)
+}
+
+.hero-host {
+    margin: 0 0 26px;
+    font: 600 clamp(20px, 4vw, 46px) 'Playfair Display', Georgia, serif;
+    letter-spacing: .08em
+}
+
+.hero-copy {
+    font-size: clamp(12px, 2vw, 18px);
+    line-height: 1.75;
+    letter-spacing: .12em
+}
+
+.hero h1 {
+    max-width: 1100px;
+    margin: 26px auto 8px;
+    font: 700 clamp(40px, 5.4vw, 68px)/1.08 'Playfair Display', Georgia, serif;
+    letter-spacing: .02em
+}
+
+.program {
+    font-size: 15px;
+    letter-spacing: .16em;
+    text-transform: uppercase
+}
+
+.hero-date {
+    margin: 35px 0 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    font: 600 clamp(25px, 4vw, 40px) 'Playfair Display', Georgia, serif
+}
+
+.hero-date span {
+    height: 1px;
+    width: 80px;
+    background: rgba(255, 255, 255, .65)
+}
+
+.hero-content>p:not(.hero-host):not(.hero-copy):not(.program) {
+    margin: 10px;
+    font: 600 clamp(13px, 2vw, 20px) 'Playfair Display', Georgia, serif;
+    letter-spacing: .12em
+}
+
+.scroll-cue {
+    position: absolute;
+    bottom: 24px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 30px;
+    display: grid;
+    justify-items: center;
+    animation: bob 1.6s infinite
+}
+
+.scroll-cue small {
+    font: 10px 'DM Sans';
+    letter-spacing: .12em;
+    text-transform: uppercase
+}
+
+@keyframes bob {
+    50% {
+        transform: translateY(7px)
+    }
+}
+
+.section {
+    padding: 110px 24px;
+    text-align: center
+}
+
+.kicker {
+    margin: 0 0 10px;
+    color: #b48936;
+    text-transform: uppercase;
+    letter-spacing: .28em;
+    font-size: 11px;
+    font-weight: 600
+}
+
+.section-date {
+    font: italic 18px 'Playfair Display', Georgia, serif;
+    color: var(--muted)
+}
+
+h2 {
+    margin: 12px 0 50px;
+    font: 600 clamp(40px, 5vw, 63px) 'Playfair Display', Georgia, serif
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    gap: clamp(12px, 4vw, 45px)
+}
+
+.timer div {
+    display: grid;
+    gap: 14px;
+    justify-items: center
+}
+
+.timer strong {
+    display: grid;
+    place-items: center;
+    width: clamp(65px, 12vw, 120px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid rgba(180, 137, 54, .55);
+    background: rgba(255, 255, 255, .5);
+    font: 600 clamp(25px, 5vw, 45px) 'Playfair Display', Georgia, serif
+}
+
+.timer span {
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted)
+}
+
+.details {
+    background: #f5edcf
+}
+
+.details-grid {
+    margin: auto;
+    max-width: 1020px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    text-align: center
+}
+
+.details article,
+.map {
+    min-height: 320px;
+    padding: 48px 38px;
+    background: rgba(255, 253, 239, .72);
+    border: 1px solid rgba(180, 137, 54, .35);
+    border-radius: 18px
+}
+
+.details h3 {
+    margin: 0 0 35px;
+    font: 600 30px 'Playfair Display', Georgia, serif
+}
+
+.detail {
+    font-size: 14px;
+    line-height: 1.7
+}
+
+.note {
+    margin: 33px auto 25px;
+    max-width: 330px;
+    font: italic 17px 'Playfair Display', Georgia, serif;
+    line-height: 1.5;
+    color: var(--muted)
+}
+
+.directions {
+    color: #8e6620;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-decoration: none;
+    text-transform: uppercase
+}
+
+.map {
+    padding: 0;
+    overflow: hidden
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    border: 0;
+    filter: saturate(.6) sepia(.1)
+}
+
+.thanks {
+    margin: 70px 0 0;
+    font: 600 clamp(29px, 4vw, 48px) 'Playfair Display', Georgia, serif;
+    color: #b48936
+}
+
+@media(max-width:650px) {
+    .nav {
+        height: 62px
+    }
+
+    .nav-links {
+        display: none
+    }
+
+    .menu-button {
+        display: block
+    }
+
+    .mobile-links {
+        position: absolute;
+        top: 62px;
+        left: 0;
+        right: 0;
+        display: grid;
+        background: rgba(7, 41, 29, .96);
+        padding: 16px 26px;
+        gap: 20px;
+        text-align: left;
+        font-size: 13px;
+        letter-spacing: .1em;
+        text-transform: uppercase
+    }
+
+    .hero-copy {
+        line-height: 1.6
+    }
+
+    .section {
+        padding: 78px 18px
+    }
+
+    .timer {
+        gap: 9px
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr
+    }
+
+    .details article {
+        min-height: auto;
+        padding: 42px 22px
+    }
+
+    .map {
+        min-height: 280px
+    }
+
+    .map iframe {
+        min-height: 280px
+    }
+}
+
+.music-button {
+    position: absolute;
+    right: 26px;
+    bottom: 23px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 255, 255, .55);
+    border-radius: 99px;
+    background: rgba(4, 35, 24, .35);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font: 600 10px "DM Sans", sans-serif;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    cursor: pointer
+}
+
+.music-button:first-letter {
+    font-size: 14px
+}
+
+@media(max-width:650px) {
+    .music-button {
+        right: 16px;
+        bottom: 16px
+    }
+}
+
+.bride-name {
+    margin: 16px 0 0 !important;
+    font: italic clamp(17px, 2vw, 25px) "Playfair Display", Georgia, serif !important;
+    letter-spacing: .06em !important;
+    text-transform: none !important
+}
+
+.rsvp-list {
+    margin: 55px auto -36px;
+    max-width: 700px
+}
+
+.rsvp-list p:last-child {
+    line-height: 1.9;
+    color: var(--muted);
+    font-size: 14px
+}.hero-event{margin:0 0 20px!important;color:#f2cb72!important;font:600 clamp(18px,3vw,30px) "Playfair Display",Georgia,serif!important;letter-spacing:.3em!important;text-transform:uppercase!important}.powered-by{display:flex;align-items:center;justify-content:center;gap:12px;padding:22px 18px;background:#0b3527;color:#f7e9bd;font-size:12px;letter-spacing:.04em}.powered-by img{width:68px;height:68px;padding:5px;object-fit:contain;background:#fff8e8;border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,.18)}.powered-by strong{color:#e4bb63;font-weight:600}@media(max-width:480px){.powered-by{font-size:10px;gap:8px}.powered-by img{width:52px;height:52px}}.rsvp-section{padding:72px 24px;background:#f5edcf}.rsvp-section .rsvp-list{margin:0 auto;max-width:760px}.rsvp-section .rsvp-list p:last-child{margin:15px 0 0;line-height:2;color:var(--green);font-size:15px;font-weight:500}.rsvp-section{background:linear-gradient(135deg,#0b3928,#12543a)!important;padding:82px 24px!important;border-top:3px solid #d7ac52;border-bottom:3px solid #d7ac52}.rsvp-section .kicker{color:#f1c76c!important;font-size:12px!important}.rsvp-section .rsvp-list{padding:30px 36px;border:1px solid rgba(241,199,108,.65);border-radius:10px;background:rgba(0,0,0,.12);box-shadow:0 12px 32px rgba(0,0,0,.18)}.rsvp-section .rsvp-list p:last-child{color:#fff5d1!important;font-size:16px!important;font-weight:600!important;line-height:2.15!important}@media(max-width:480px){.rsvp-section .rsvp-list{padding:24px 18px}.rsvp-section .rsvp-list p:last-child{font-size:13px!important}}.rsvp-section{padding:48px 24px!important;background:#fff7df!important;border:0!important}.rsvp-section .rsvp-list{max-width:900px;margin:0 auto!important;padding:25px 34px!important;display:flex;align-items:center;gap:34px;text-align:left;border:1px solid rgba(180,137,54,.45)!important;border-left:5px solid #c99636!important;border-radius:8px!important;background:#fffdf5!important;box-shadow:0 10px 28px rgba(26,58,39,.1)!important}.rsvp-heading{min-width:205px;padding-right:28px;border-right:1px solid rgba(180,137,54,.35)}.rsvp-section .rsvp-heading .kicker{margin:0 0 7px!important;color:#b08029!important}.rsvp-heading h3{margin:0;color:#174934;font:600 23px/1.15 "Playfair Display",Georgia,serif}.rsvp-contacts{display:flex;flex-wrap:wrap;gap:9px}.rsvp-contacts span{padding:7px 10px;border-radius:99px;background:#edf3e9;color:#174934;font-size:12px;font-weight:600;white-space:nowrap}@media(max-width:680px){.rsvp-section{padding:35px 18px!important}.rsvp-section .rsvp-list{display:block;padding:25px 22px!important;text-align:center}.rsvp-heading{min-width:0;padding:0 0 18px;border-right:0;border-bottom:1px solid rgba(180,137,54,.35)}.rsvp-contacts{justify-content:center;padding-top:18px}.rsvp-heading h3{font-size:21px}}.rsvp-section{padding:58px 24px!important;background:#103e2d url("/walima-botanical-backdrop.png") center/cover!important;position:relative;border:0!important;color:#fff7d8!important}.rsvp-section::before{content:"";position:absolute;inset:0;background:rgba(5,43,29,.87)}.rsvp-section .rsvp-list{position:relative;max-width:920px;margin:0 auto!important;padding:0!important;display:block!important;text-align:center!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}.rsvp-section .kicker{margin:0!important;color:#f1c76c!important;font-size:11px!important}.rsvp-rule{display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0 12px;color:#e3b454;font-size:12px}.rsvp-rule span{width:52px;height:1px;background:rgba(239,197,104,.6)}.rsvp-message{margin:0 0 17px;color:#f8edc9;font:italic 20px "Playfair Display",Georgia,serif}.rsvp-section .rsvp-contacts{display:flex;justify-content:center;flex-wrap:wrap;gap:0;padding:0!important}.rsvp-section .rsvp-contacts span{padding:0 15px!important;border-radius:0!important;background:transparent!important;color:#fff8db!important;font-size:13px!important;font-weight:500!important;white-space:nowrap;border-right:1px solid rgba(239,197,104,.55)}.rsvp-section .rsvp-contacts span:last-child{border-right:0}@media(max-width:680px){.rsvp-section{padding:45px 18px!important}.rsvp-message{font-size:18px}.rsvp-section .rsvp-contacts{row-gap:11px}.rsvp-section .rsvp-contacts span{font-size:12px!important;padding:0 10px!important}}
+/* Walima reception palette */
+:root { --cream: #f7f2e8; --green: #112b49; --gold: #c5a15d; --muted: #586979; }
+.hero { background-color: #102945; }
+.hero-overlay { background: linear-gradient(90deg, rgba(8, 27, 48, .78), rgba(13, 40, 67, .58), rgba(8, 27, 48, .78)); }
+.hero-content { color: #fffaf0; }
+.hero-host, .hero-date b, .hero-date + p, .program { color: #e5c47e; }
+.details, .countdown { background-color: #f7f2e8; }
+/* Pure navy Walima palette */
+:root { --cream: #f7f2e8; --green: #112b49; --gold: #c5a15d; --muted: #5b6878; }
+.nav, .mobile-links { background: rgba(10, 31, 55, .96); }
+.hero { background-color: #0b2340; }
+.hero-overlay { background: linear-gradient(90deg, rgba(5, 21, 40, .82), rgba(11, 38, 67, .60), rgba(5, 21, 40, .82)); }
+.rsvp-section { background: #112b49 url("/walima-botanical-backdrop.png") center/cover !important; }
+.rsvp-section::before { background: rgba(7, 25, 47, .88); }
+.powered-by { background: #0b2340; }
+.rsvp-heading h3, .rsvp-contacts span { color: #112b49; }
+.rsvp-contacts span { background: #eaf0f5; }
