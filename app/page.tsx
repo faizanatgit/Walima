@@ -42,11 +42,15 @@ export default function Home() {
     return () => window.removeEventListener("pointerdown", toggleMusicOnBackgroundTap);
   }, [musicAvailable]);
   const closeMenu = () => setMenu(false);
-  const toggleMusic = async () => {
-    if (!audio.current) return;
-    if (playing) { audio.current.pause(); setPlaying(false); return; }
-    await audio.current.play();
-    setPlaying(true);
+  const toggleMusic = () => {
+    const audioElement = audio.current;
+    if (!audioElement) return;
+    if (!audioElement.paused) {
+      audioElement.pause();
+      setPlaying(false);
+      return;
+    }
+    audioElement.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
   };
   return <main>
     <section id="home" className="hero">
@@ -55,8 +59,8 @@ export default function Home() {
         <p className="hero-event">Walima</p><p className="hero-host">MR. &amp; MRS. AZHAR BASHIR</p><p className="hero-copy">CORDIALLY INVITE YOU<br />TO CELEBRATE THE WALIMA RECEPTION<br />OF THEIR BELOVED SON</p>
         <h1>Muhammad Zeeshan Azhar Malik</h1><p className="program">Programme In-sha-Allah</p><div className="hero-date"><span /><b>Friday</b><span /></div><p>6th &nbsp;|&nbsp; NOVEMBER &nbsp;|&nbsp; 2026</p><p>WALIMA RECEPTION</p>
       </div><a className="scroll-cue" href="#countdown">&darr;<small>Scroll to discover</small></a>
-      <audio ref={audio} autoPlay loop preload="auto" src="/Walima.mp3" onEnded={() => setPlaying(false)} />
-      <button className="music-button" onClick={toggleMusic} aria-label={playing ? "Pause music" : "Play music"}>{playing ? "Pause" : "Play"}<span>{playing ? "Music on" : "Play music"}</span></button>
+      <audio ref={audio} autoPlay loop preload="auto" src="/Walima.mp3" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setPlaying(false)} />
+      <button className="music-button" type="button" onClick={toggleMusic} aria-label={playing ? "Pause music" : "Play music"}>{playing ? "Ⅱ" : "▶"}<span>{playing ? "Music on" : "Play music"}</span></button>
     </section>
     <section id="rsvp" className="rsvp-section section"><div className="rsvp-list"><p className="kicker">RSVP</p><div className="rsvp-rule"><span></span>*<span></span></div><p className="rsvp-message">Please confirm your presence with</p><div className="rsvp-contacts"><span>Shahid Malik (UK)</span><span>Ali Imran Bajwa</span><span>Muhammad Rayyan Malik</span><span>Engr Farman Azhar</span><span>Imran Malik</span></div></div></section>
     <section id="countdown" className="countdown section"><p className="kicker">Save the date</p><p className="section-date">6th November, 2026</p><h2>Counting Down</h2><div className="timer">{time.map((part) => <div key={part.label}><strong>{String(part.value).padStart(2, "0")}</strong><span>{part.label}</span></div>)}</div></section>
