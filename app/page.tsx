@@ -37,7 +37,7 @@ export default function Home() {
   };
   return <main>
     <section id="home" className="hero">
-      {videoAvailable && (<video className="hero-video" autoPlay loop muted playsInline poster="/walima-botanical-backdrop.png"><source src="/walima.mp4" type="video/mp4" /></video>)}
+      {videoAvailable && (<video className="hero-video" autoPlay loop muted playsInline poster="/walima-botanical-backdrop.webp"><source src="/walima.mp4" type="video/mp4" /></video>)}
       <div className="hero-overlay" /><div className="hero-content">
         <p className="hero-event">Walima</p><p className="hero-host">MR. &amp; MRS. AZHAR BASHIR</p><p className="hero-copy">CORDIALLY INVITE YOU<br />TO CELEBRATE THE WALIMA RECEPTION<br />OF THEIR BELOVED SON</p>
         <h1>Muhammad Zeeshan Azhar Malik</h1><p className="program">Programme In-sha-Allah</p><div className="hero-date"><span /><b>Sunday</b><span /></div><p>8th &nbsp;|&nbsp; NOVEMBER &nbsp;|&nbsp; 2026</p><p>WALIMA RECEPTION</p>
