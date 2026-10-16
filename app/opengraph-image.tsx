@@ -22,7 +22,7 @@ export default function OpenGraphImage() {
         </div>
       </div>
       <div style={{ width: "45%", height: "100%", display: "flex", overflow: "hidden" }}>
-        <img src={new URL("../public/walima-mobile-portrait.png", import.meta.url).toString()} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+        <img src={"https://walima-phi.vercel.app/walima-mobile-portrait.png"} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
       </div>
     </div>,
     { ...size }
