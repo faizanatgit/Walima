@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const alt = "Walima invitation for Muhammad Zeeshan Azhar Malik";
-export const size = { width: 1200, height: 630 };
+export const size = { width: 1200, height: 1200 };
 export const contentType = "image/png";
 
 export default function OpenGraphImage() {
