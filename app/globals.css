@@ -555,3 +555,8 @@ h2 {
 @media (max-width: 680px) {
   .rsvp-section .rsvp-contacts strong { font-size: 14px; }
 }
+/* Larger time and venue details on the hero */
+.hero-event-details { font-size: clamp(13px, 1.3vw, 16px); }
+@media (max-width: 680px) {
+  .hero-event-details { font-size: 12px; }
+}
