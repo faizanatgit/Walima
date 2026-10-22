@@ -501,3 +501,57 @@ h2 {
     letter-spacing: .08em;
   }
 }
+/* Front event details and RSVP phone numbers */
+.hero-event-details {
+  max-width: 700px;
+  margin: 18px auto -8px;
+  color: rgba(255, 248, 220, .94);
+  font-size: clamp(11px, 1.3vw, 14px);
+  letter-spacing: .045em;
+  line-height: 1.55;
+}
+.hero-event-details p { margin: 4px 0 !important; }
+.hero-event-details strong { color: #f1c76c; font-weight: 700; letter-spacing: .12em; }
+.hero-event-details i { display: inline-block; height: 13px; margin: 0 10px -2px; border-left: 1px solid rgba(241, 199, 108, .65); }
+.hero-event-details + .hero-date { margin-top: 24px; }
+.rsvp-section .rsvp-contacts { gap: 18px 0; }
+.rsvp-section .rsvp-contacts > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 0 22px;
+  border-right: 1px solid rgba(239, 197, 104, .55);
+}
+.rsvp-section .rsvp-contacts > div:last-child { border-right: 0; }
+.rsvp-section .rsvp-contacts strong { color: #fff8db; font-size: 13px; font-weight: 600; }
+.rsvp-section .rsvp-contacts a { color: #f1c76c; font-size: 12px; letter-spacing: .06em; text-decoration: none; }
+.rsvp-section .rsvp-contacts a:hover { text-decoration: underline; }
+@media (max-width: 680px) {
+  .hero-event-details { margin-top: 14px; font-size: 10px; line-height: 1.45; }
+  .hero-event-details i { margin: 0 6px -2px; }
+  .hero-event-details + .hero-date { margin-top: 20px; }
+  .rsvp-section .rsvp-contacts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 0; }
+  .rsvp-section .rsvp-contacts > div { padding: 0 8px; border-right: 1px solid rgba(239, 197, 104, .4); }
+  .rsvp-section .rsvp-contacts > div:nth-child(2n) { border-right: 0; }
+  .rsvp-section .rsvp-contacts strong { font-size: 12px; }
+}
+/* Keep the final RSVP contact centered on phones */
+@media (max-width: 680px) {
+  .rsvp-section .rsvp-contacts > div:last-child {
+    grid-column: 1 / -1;
+    border-right: 0;
+    justify-self: center;
+  }
+}
+/* Match the compact mobile hero and RSVP typography across invitations */
+@media (max-width: 650px) {
+  .hero h1 {
+    margin-top: 20px;
+    font-size: clamp(32px, 8.5vw, 36px);
+  }
+}
+.rsvp-section .rsvp-contacts strong { font-size: 15px; }
+@media (max-width: 680px) {
+  .rsvp-section .rsvp-contacts strong { font-size: 14px; }
+}
