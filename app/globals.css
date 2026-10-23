@@ -572,4 +572,4 @@ h2 {
   .hero-host { font-size: clamp(16px, 4.7vw, 20px); letter-spacing: .05em; }
 }
 /* Bold memorial line */
-.hero-late { font-style: normal; font-weight: 700; }
+.hero-late { font-style: normal; font-weight: 900; }
