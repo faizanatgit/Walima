@@ -144,7 +144,7 @@ body {
 
 .hero-content>p:not(.hero-host):not(.hero-copy):not(.program) {
     margin: 10px;
-    font: 600 clamp(13px, 2vw, 20px) 'Playfair Display', Georgia, serif;
+    font: 900 clamp(13px, 2vw, 20px) 'Playfair Display', Georgia, serif;
     letter-spacing: .12em
 }
 
@@ -486,7 +486,7 @@ h2 {
   padding-top: 16px;
   border-top: 1px solid rgba(244, 222, 176, .6);
   color: #f4deb0;
-  font: 600 clamp(11px, 1.35vw, 15px)/1.4 "Playfair Display", Georgia, serif;
+  font: 900 clamp(11px, 1.35vw, 15px)/1.4 "Playfair Display", Georgia, serif;
   letter-spacing: .13em;
 }
 /* Smaller scroll cue on phones */
@@ -564,7 +564,7 @@ h2 {
 .hero-late {
   margin: -10px 0 14px !important;
   color: #f1c76c !important;
-  font: italic clamp(14px, 1.8vw, 20px)/1.35 "Playfair Display", Georgia, serif;
+  font: italic clamp(16px, 1.8vw, 20px)/1.35 "Playfair Display", Georgia, serif;
   letter-spacing: .04em;
 }
 @media (max-width: 650px) {
