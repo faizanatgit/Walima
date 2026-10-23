@@ -560,3 +560,14 @@ h2 {
 @media (max-width: 680px) {
   .hero-event-details { font-size: 12px; }
 }
+/* Memorial line and responsive host name */
+.hero-late {
+  margin: -10px 0 14px !important;
+  color: #f1c76c !important;
+  font: italic clamp(14px, 1.8vw, 20px)/1.35 "Playfair Display", Georgia, serif;
+  letter-spacing: .04em;
+}
+@media (max-width: 650px) {
+  .hero-late { margin: -8px 0 12px !important; font-size: 13px; }
+  .hero-host { font-size: clamp(16px, 4.7vw, 20px); letter-spacing: .05em; }
+}
