@@ -144,7 +144,7 @@ body {
 
 .hero-content>p:not(.hero-host):not(.hero-copy):not(.program) {
     margin: 10px;
-    font: 900 clamp(13px, 2vw, 20px) 'Playfair Display', Georgia, serif;
+    font: 900 clamp(14px, 2vw, 20px) 'Playfair Display', Georgia, serif;
     letter-spacing: .12em
 }
 
@@ -647,3 +647,317 @@ h2 {
 
 /* Lighter Poppins blessing line */
 .bismillah-blessing { font-weight: 400 !important; }
+
+/* Opening invitation-card preloader */
+.invitation-preloader {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(75, 31, 20, .35), rgba(8, 13, 18, .98));
+  animation: preloader-fade 1.65s ease forwards;
+}
+.preloader-card {
+  position: relative;
+  width: min(340px, 80vw);
+  aspect-ratio: 1.38;
+  perspective: 1100px;
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, .45));
+}
+.preloader-content {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  padding: 28px;
+  border: 1px solid rgba(232, 194, 123, .65);
+  background: linear-gradient(135deg, #102d24, #071a16);
+  color: #e8c27b;
+  text-align: center;
+}
+.preloader-content img { width: min(175px, 54vw); height: auto; mix-blend-mode: screen; }
+.preloader-content span { font: 500 9px/1.4 'Poppins', Arial, sans-serif; letter-spacing: .2em; }
+.preloader-door {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(135deg, #e8c27b, #9d672e);
+  border: 1px solid rgba(255, 236, 177, .8);
+  transition: transform .85s cubic-bezier(.68, -.25, .27, 1.22);
+  backface-visibility: hidden;
+}
+.preloader-door::after { content: ''; position: absolute; inset: 14px; border: 1px solid rgba(69, 35, 13, .45); }
+.preloader-door-left { left: 0; transform-origin: left center; }
+.preloader-door-right { right: 0; transform-origin: right center; }
+.invitation-preloader.is-open .preloader-door-left { transform: rotateY(-112deg); }
+.invitation-preloader.is-open .preloader-door-right { transform: rotateY(112deg); }
+@keyframes preloader-fade { 0%, 84% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
+@media (max-width: 650px) {
+  .preloader-card { width: min(292px, 82vw); }
+  .preloader-content span { font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .invitation-preloader { display: none; }
+}
+/* Floral curtain-reveal preloader */
+.invitation-preloader {
+  background: #101b19;
+  animation: curtain-preloader-fade 1.65s ease forwards;
+}
+.curtain-message {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  color: #f1cb82;
+  text-align: center;
+  transition: opacity .32s ease;
+}
+.curtain-message img { width: min(230px, 64vw); height: auto; mix-blend-mode: screen; }
+.curtain-message span { font: 500 9px/1.4 'Poppins', Arial, sans-serif; letter-spacing: .22em; }
+.curtain {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: 51%;
+  overflow: hidden;
+  background: linear-gradient(90deg, #210711, #71172a 48%, #350914);
+  box-shadow: inset 0 0 42px rgba(0, 0, 0, .52), 0 0 18px rgba(0, 0, 0, .36);
+  transition: transform .95s cubic-bezier(.7, 0, .2, 1);
+}
+.curtain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: .38;
+  background: repeating-linear-gradient(90deg, transparent 0 26px, rgba(255, 211, 131, .18) 27px 29px, transparent 30px 54px);
+}
+.curtain span { position: absolute; color: #e8c27b; text-shadow: 0 0 14px rgba(255, 221, 151, .5); font-size: clamp(28px, 5vw, 58px); }
+.curtain span:first-child { top: 14%; }
+.curtain span:last-child { bottom: 16%; font-size: clamp(18px, 3vw, 34px); }
+.curtain-left { left: 0; }
+.curtain-left span:first-child { right: 13%; }
+.curtain-left span:last-child { left: 18%; }
+.curtain-right { right: 0; }
+.curtain-right span:first-child { left: 13%; }
+.curtain-right span:last-child { right: 18%; }
+.invitation-preloader.is-open .curtain-left { transform: translateX(-102%); }
+.invitation-preloader.is-open .curtain-right { transform: translateX(102%); }
+.invitation-preloader.is-open .curtain-message { opacity: 0; }
+.floral-particles { position: absolute; z-index: 3; inset: 0; pointer-events: none; }
+.floral-particles i { position: absolute; color: #f0cd86; font-style: normal; opacity: 0; text-shadow: 0 0 12px rgba(255, 224, 164, .45); }
+.floral-particles i:nth-child(1) { top: 25%; left: 47%; font-size: 22px; }
+.floral-particles i:nth-child(2) { top: 58%; left: 48%; font-size: 30px; }
+.floral-particles i:nth-child(3) { top: 38%; left: 52%; font-size: 17px; }
+.floral-particles i:nth-child(4) { top: 66%; left: 44%; font-size: 22px; }
+.floral-particles i:nth-child(5) { top: 20%; left: 54%; font-size: 18px; }
+.floral-particles i:nth-child(6) { top: 49%; left: 43%; font-size: 15px; }
+.invitation-preloader.is-open .floral-particles i { animation: floral-drift .82s ease-out forwards; }
+.invitation-preloader.is-open .floral-particles i:nth-child(2n) { animation-delay: .08s; }
+@keyframes curtain-preloader-fade { 0%, 84% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
+@keyframes floral-drift { 0% { opacity: 0; transform: translate(0, 0) scale(.45) rotate(0deg); } 24% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--drift-x, 90px), -120px) scale(1.25) rotate(170deg); } }
+.floral-particles i:nth-child(2n) { --drift-x: -100px; }
+@media (max-width: 650px) {
+  .curtain-message img { width: min(195px, 62vw); }
+  .curtain-message span { font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .invitation-preloader { display: none; } }
+/* Smooth invitation reveal after the curtains open */
+main > *:not(.invitation-preloader) {
+  transition: opacity .58s ease, transform .78s cubic-bezier(.22, 1, .36, 1);
+}
+main.intro-active > *:not(.invitation-preloader) {
+  opacity: 0;
+  transform: translateY(16px) scale(1.012);
+}
+@media (prefers-reduced-motion: reduce) {
+  main > *:not(.invitation-preloader) { transition: none; }
+}
+/* Envelope opening with invitation card sliding out */
+.invitation-preloader {
+  background: radial-gradient(circle at 50% 45%, #4c1324, #13070d 74%);
+}
+.envelope {
+  position: relative;
+  width: min(380px, 84vw);
+  aspect-ratio: 1.42;
+  filter: drop-shadow(0 22px 35px rgba(0, 0, 0, .5));
+}
+.envelope-letter {
+  position: absolute;
+  z-index: 1;
+  left: 8%;
+  right: 8%;
+  top: 12%;
+  min-height: 76%;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 18px;
+  background: #fff6dc;
+  border: 1px solid #d9b768;
+  color: #7c1d32;
+  text-align: center;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, .25);
+  transform: translateY(24px) scale(.94);
+  transition: transform .82s cubic-bezier(.25, .85, .25, 1) .18s;
+}
+.envelope-letter img { width: min(165px, 48vw); height: auto; mix-blend-mode: multiply; }
+.envelope-letter span { font: 600 9px/1.4 'Poppins', Arial, sans-serif; letter-spacing: .2em; }
+.envelope-back,
+.envelope-front,
+.envelope-flap { position: absolute; inset: 0; }
+.envelope-back { z-index: 0; background: linear-gradient(135deg, #ce9b55, #8c3a3f); border: 1px solid rgba(255, 223, 151, .75); }
+.envelope-front {
+  z-index: 3;
+  top: 48%;
+  background: linear-gradient(145deg, #a64a4e, #6c1627);
+  clip-path: polygon(0 0, 50% 56%, 100% 0, 100% 100%, 0 100%);
+  border-bottom: 1px solid rgba(255, 222, 148, .65);
+}
+.envelope-flap {
+  z-index: 4;
+  height: 56%;
+  transform-origin: top center;
+  background: linear-gradient(145deg, #c97b61, #7b192b);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transition: transform .72s cubic-bezier(.45, .05, .25, 1), z-index .01s linear .72s;
+  backface-visibility: hidden;
+}
+.envelope-flap::after { content: '✦'; position: absolute; top: 29%; left: 47%; color: #f5d591; font-size: 23px; text-shadow: 0 0 10px rgba(255, 234, 180, .5); }
+.invitation-preloader.is-open .envelope-flap { z-index: 0; transform: rotateX(178deg); }
+.invitation-preloader.is-open .envelope-letter { z-index: 5; transform: translateY(-46%) scale(1); }
+@media (max-width: 650px) {
+  .envelope { width: min(326px, 85vw); }
+  .envelope-letter span { font-size: 8px; }
+  .envelope-letter img { width: min(145px, 46vw); }
+}
+@media (prefers-reduced-motion: reduce) { .invitation-preloader { display: none; } }
+/* Gold wax-seal reveal preloader */
+.invitation-preloader { background: radial-gradient(circle at center, #452719, #100b0b 72%); }
+.wax-invitation { position: relative; width: min(355px, 84vw); aspect-ratio: 1.35; display: grid; place-items: center; }
+.wax-card { position: absolute; z-index: 1; width: 76%; min-height: 72%; display: grid; place-items: center; align-content: center; gap: 12px; padding: 18px; background: #fff5d9; border: 1px solid #d1a64d; box-shadow: 0 18px 34px rgba(0, 0, 0, .38); color: #7c1d32; text-align: center; opacity: 0; transform: scale(.84) translateY(16px); transition: opacity .34s ease .42s, transform .68s cubic-bezier(.2, 1.15, .34, 1) .42s; }
+.wax-card img { width: min(166px, 47vw); height: auto; mix-blend-mode: multiply; }
+.wax-card span { font: 600 9px/1.4 'Poppins', Arial, sans-serif; letter-spacing: .2em; }
+.wax-seal { position: absolute; z-index: 3; width: min(145px, 38vw); aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: radial-gradient(circle at 33% 27%, #f5d891 0 7%, #dcae53 29%, #a46a1d 65%, #704012 100%); box-shadow: inset 0 0 0 7px rgba(114, 65, 17, .48), inset 0 0 24px rgba(82, 41, 6, .58), 0 15px 29px rgba(0, 0, 0, .44); color: #6b3a0d; transition: transform .68s cubic-bezier(.7, -.18, .3, 1.18), opacity .3s ease .42s; }
+.wax-seal::before { content: ''; position: absolute; inset: 12%; border: 1px dashed rgba(100, 52, 7, .72); border-radius: inherit; }
+.wax-seal b { font-size: clamp(26px, 5vw, 45px); text-shadow: 0 1px 0 rgba(255, 237, 171, .8); }
+.wax-crack { position: absolute; z-index: 2; width: 2px; height: 0; background: #4d270a; transform-origin: bottom; transition: height .2s ease .18s; box-shadow: 0 0 3px rgba(47, 19, 0, .65); }
+.wax-crack-one { top: 17%; left: 51%; transform: rotate(18deg); }
+.wax-crack-two { top: 42%; left: 50%; transform: rotate(-57deg); }
+.wax-crack-three { top: 46%; left: 50%; transform: rotate(62deg); }
+.wax-message { position: absolute; bottom: -18px; margin: 0; color: #e9c77f; font: 500 9px/1.4 'Poppins', Arial, sans-serif; letter-spacing: .18em; transition: opacity .2s ease; }
+.invitation-preloader.is-open .wax-seal { opacity: 0; transform: scale(1.42) rotate(16deg); }
+.invitation-preloader.is-open .wax-crack { height: 48%; }
+.invitation-preloader.is-open .wax-card { opacity: 1; transform: scale(1) translateY(-8px); }
+.invitation-preloader.is-open .wax-message { opacity: 0; }
+@media (max-width: 650px) { .wax-invitation { width: min(300px, 84vw); } .wax-card span, .wax-message { font-size: 8px; } }
+@media (prefers-reduced-motion: reduce) { .invitation-preloader { display: none; } }
+/* Clean gold-trimmed curtain opening */
+.invitation-preloader { background: radial-gradient(circle at center, #3b1220, #12070c 74%); }
+.curtain {
+  background: linear-gradient(90deg, #260611, #7a1830 48%, #390814);
+  border-color: rgba(232, 194, 123, .46);
+}
+.curtain::before {
+  opacity: .5;
+  background: repeating-linear-gradient(90deg, transparent 0 24px, rgba(232, 194, 123, .25) 25px 27px, transparent 28px 52px);
+}
+.curtain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(transparent, #e8c27b 10%, #e8c27b 90%, transparent);
+  box-shadow: 0 0 9px rgba(232, 194, 123, .75);
+}
+.curtain-left::after { right: 0; }
+.curtain-right::after { left: 0; }
+.curtain-message img { width: min(215px, 60vw); }
+/* Walima navy-and-gold curtains */
+.invitation-preloader { background: radial-gradient(circle at center, #173d68, #061426 74%); }
+.curtain { background: linear-gradient(90deg, #071c35, #174a78 48%, #0b294c); }
+.curtain::before { background: repeating-linear-gradient(90deg, transparent 0 24px, rgba(229, 196, 126, .25) 25px 27px, transparent 28px 52px); }
+/* Extended curtain timing and page transition */
+.invitation-preloader { animation: curtain-preloader-fade 2.8s ease forwards; }
+.curtain { transition-duration: 1.25s; transition-timing-function: cubic-bezier(.65, 0, .18, 1); }
+.curtain-message { transition: opacity .48s ease .16s; }
+main > *:not(.invitation-preloader) { transition-duration: .72s, .95s; }
+@keyframes curtain-preloader-fade { 0%, 87% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
+/* Walima botanical curtains */
+.curtain {
+  background: linear-gradient(rgba(6, 25, 47, .54), rgba(6, 25, 47, .54)), url("/walima-botanical-backdrop.webp") center/cover;
+}
+/* Preserve the botanical curtain artwork on phone screens */
+@media (max-width: 650px) {
+  .curtain {
+    width: 52%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .curtain-left { background-position: left center; }
+  .curtain-right { background-position: right center; }
+  .curtain::before { opacity: .58; }
+  .curtain::after { box-shadow: 0 0 7px rgba(232, 194, 123, .8); }
+}
+/* Smaller blessing line */
+.bismillah-blessing { font-size: clamp(6px, .65vw, 8px); }
+@media (max-width: 650px) {
+  .bismillah-blessing { font-size: 6px; }
+}
+/* Ornate floral double-door curtains on phones */
+@media (max-width: 650px) {
+  .curtain {
+    width: 50%;
+    background-image: url("/preloader-curtains.webp") !important;
+    background-size: 200% 100% !important;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+  }
+  .curtain-left { background-position: left center !important; }
+  .curtain-right { background-position: right center !important; }
+  .curtain::before { opacity: .06; }
+}
+/* Extra-compact blessing line on phones only */
+@media (max-width: 650px) {
+  .bismillah-blessing {
+    font-size: 5px;
+    letter-spacing: .045em;
+    white-space: nowrap;
+  }
+}
+/* Prevent mobile hero text from clipping */
+@media (max-width: 650px) {
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .hero-content > p,
+  .hero-event-details,
+  .hero-event-details p {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .bismillah-blessing {
+    max-width: calc(100% - 16px);
+    margin-left: auto !important;
+    margin-right: auto !important;
+    white-space: normal;
+    line-height: 1.45;
+  }
+}

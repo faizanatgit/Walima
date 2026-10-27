@@ -11,8 +11,15 @@ export default function Home() {
   const [playing, setPlaying] = useState(false);
   const [musicAvailable, setMusicAvailable] = useState(false);
   const [videoAvailable, setVideoAvailable] = useState(false);
+  const [introOpen, setIntroOpen] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
   const audio = useRef<HTMLAudioElement>(null);
   useEffect(() => { const timer = window.setInterval(() => setTime(dateParts()), 1000); return () => window.clearInterval(timer); }, []);
+  useEffect(() => {
+    const openTimer = window.setTimeout(() => setIntroOpen(true), 300);
+    const closeTimer = window.setTimeout(() => setShowIntro(false), 2800);
+    return () => { window.clearTimeout(openTimer); window.clearTimeout(closeTimer); };
+  }, []);
   useEffect(() => {
     fetch("/Asma-ul-Husna.mp3", { method: "HEAD" }).then((r) => setMusicAvailable(r.ok)).catch(() => setMusicAvailable(false));
     fetch("/walima.mp4", { method: "HEAD" }).then((r) => setVideoAvailable(r.ok)).catch(() => setVideoAvailable(false));
@@ -35,7 +42,7 @@ export default function Home() {
     }
     audioElement.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
   };
-  return <main>
+  return <main className={showIntro ? "intro-active" : ""}>{showIntro && <div className={`invitation-preloader ${introOpen ? "is-open" : ""}`} role="status" aria-label="Opening invitation"><div className="curtain curtain-left" /><div className="curtain curtain-right" /></div>}
     <section id="home" className="hero">
       {videoAvailable && (<video className="hero-video" autoPlay loop muted playsInline poster="/walima-botanical-backdrop.webp"><source src="/walima.mp4" type="video/mp4" /></video>)}
       <div className="hero-overlay" /><div className="hero-content">
